@@ -1,0 +1,9 @@
+{
+  "name": "mine-portal",
+  "private": true,
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend",
+    "start": "node backend/src/server.js"
+  }
+}

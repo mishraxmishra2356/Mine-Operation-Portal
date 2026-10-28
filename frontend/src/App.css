@@ -1,0 +1,103 @@
+
+.app-shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #0f172a;
+  border-right: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+}
+
+.sidebar-brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #f8fafc;
+  padding: 0 0.5rem 1.5rem;
+  letter-spacing: 0.02em;
+}
+.sidebar-brand span { color: #f59e0b; }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.sidebar-link:hover { background: #1e293b; color: #f8fafc; }
+.sidebar-link-active { background: #1e293b; color: #f59e0b; font-weight: 600; }
+
+.sidebar-logout {
+  border: 1px solid #334155;
+  background: transparent;
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.sidebar-logout:hover { border-color: #f59e0b; color: #f59e0b; }
+
+.main-column { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1e293b;
+  background: #0b1220;
+}
+
+.topbar-title { margin: 0; font-size: 1.1rem; color: #f8fafc; flex: 1; }
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.topbar-user { display: flex; align-items: center; gap: 10px; }
+.topbar-user-name { font-size: 0.85rem; color: #94a3b8; }
+
+.topbar-user-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #1a1206;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+}
+
+.content-area { padding: 1.5rem; flex: 1; }
+
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .charts-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-flex; }
+  .sidebar {
+    position: fixed;
+    inset: 0 30% 0 0;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+  .sidebar-open { transform: translateX(0); }
+  .stats-grid { grid-template-columns: 1fr; }
+}
