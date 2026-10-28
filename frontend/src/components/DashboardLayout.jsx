@@ -8,6 +8,7 @@ function DashboardLayout({ children }) {
   return (
     <div className="app-shell">
       <Sidebar open={navOpen} onNavigate={() => setNavOpen(false)} />
+      {navOpen && <div className="nav-backdrop" onClick={() => setNavOpen(false)} aria-hidden="true" />}
       <div className="main-column">
         <Navbar onToggleNav={() => setNavOpen((open) => !open)} />
         <main className="content-area">{children}</main>

@@ -3,7 +3,8 @@ import DashboardLayout from "../components/DashboardLayout";
 import StatCard from "../components/StatCard";
 import DataTable from "../components/DataTable";
 import Badge from "../components/Badge";
-import { BENCHES } from "../data/mockData";
+import DataState from "../components/DataState";
+import { useApi } from "../hooks/useApi";
 import { benchStatus, fmt } from "../utils/helpers";
 
 const COLUMNS = [
@@ -22,6 +23,8 @@ const COLUMNS = [
 ];
 
 function Production() {
+  const { data: benches, error, loading } = useApi("/production/benches");
+
   return (
     <DashboardLayout>
       <div className="stats-grid">
@@ -33,7 +36,9 @@ function Production() {
 
       <div className="chart-panel section-gap">
         <h3 className="panel-title">Active Bench Excavation Progress</h3>
-        <DataTable columns={COLUMNS} rows={BENCHES} />
+        <DataState loading={loading} error={error}>
+          {benches && <DataTable columns={COLUMNS} rows={benches} />}
+        </DataState>
       </div>
     </DashboardLayout>
   );

@@ -16,7 +16,7 @@ function DataTable({ columns, rows, rowKey = "id" }) {
           {rows.map((row) => (
             <tr key={row[rowKey]}>
               {columns.map((c) => (
-                <td key={c.key} className={c.className}>
+                <td key={c.key} className={c.className} data-label={c.label}>
                   {c.render ? c.render(row) : row[c.key]}
                 </td>
               ))}
